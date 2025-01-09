@@ -1,0 +1,32 @@
+program: train_gat_MAE_txt.py  # スクリプトのファイル名
+method: grid  # グリッドサーチ
+project: GAT_energy_normalized_Gshifted
+metric:
+  name: val_loss  # 目標メトリクスとして検証損失を設定
+  goal: minimize  # 検証損失は低いほど良い
+parameters:
+  hidden_channels:
+    values: [128]
+  optimizer:
+    values: ["adam"]
+  learning_rate:
+    values: [0.0001, 0.001, 0.01]  # 離散的な値
+  n_layers:
+    values: [4]
+  knn_k:
+    values: [4]
+  n_units:
+    values: [256]
+  feat_type:
+    values: ["gat"]  # GATConvを使用する
+  epochs:
+    values: [500]
+  batch_size:
+    values: [8, 256]
+  dropout_rate:
+    values: [0.2]  # 離散的な値に変更
+  activation_function:
+    values: ["relu"]
+  dense_units:
+    values: [1]
+
